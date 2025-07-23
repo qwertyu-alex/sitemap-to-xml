@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Sitemap to CSV Converter",
   description:
     "Transform XML sitemaps into structured CSV data for analysis and reporting",
-  generator: "v0.dev",
   icons: {
     icon: [{ url: "/favicon.png", sizes: "26x26", type: "image/png" }],
     shortcut: "/favicon.png",
