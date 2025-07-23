@@ -19,6 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useFavicon } from "@/lib/favicon-utils";
 import {
   AlertCircle,
+  CheckCircle,
   Download,
   File,
   FileText,
@@ -276,9 +277,69 @@ export default function SitemapConverter() {
         backgroundSize: "20px 20px",
       }}
     >
+      {/* Schema.org FAQ structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "How to analyze competitor sitemaps for SEO?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Use our free XML sitemap to CSV converter to download competitor sitemaps and convert them to spreadsheet format. This allows you to analyze their site structure, page priorities, update frequencies, and hreflang configurations for international SEO insights.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can I import the CSV into Excel or Google Sheets?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes! Our tool generates standard CSV files that can be directly imported into Excel, Google Sheets, or any spreadsheet application. Perfect for SEO analysis, reporting, and competitor research workflows.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Is this sitemap converter free to use?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Absolutely! Our XML sitemap to CSV converter is completely free with no limits on file size or number of conversions. Perfect for SEO professionals, agencies, and anyone doing competitor analysis.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
+
       <div className="max-w-4xl mx-auto px-6 py-12">
         {/* Header */}
         <header className="text-center mb-12 relative">
+          {/* Back to AI Flow Chat */}
+          <a
+            href="https://aiflowchat.com"
+            target="_blank"
+            className="absolute top-0 left-0 inline-flex items-center text-sm text-gray-500 hover:text-gray-700 transition-colors"
+            title="Back to AI Flow Chat"
+          >
+            <svg
+              className="w-4 h-4 mr-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+            Back to AI Flow Chat
+          </a>
+
           {/* GitHub Link */}
           <a
             href="https://github.com/qwertyu-alex/sitemap-to-xml"
@@ -303,12 +364,12 @@ export default function SitemapConverter() {
             Sitemap to CSV Converter
           </h1>
           <p className="text-gray-600 max-w-lg mx-auto leading-relaxed">
-            Transform XML sitemaps into structured CSV data for analysis and
-            reporting
+            Transform XML sitemaps into structured CSV data for competitor
+            analysis and reporting
           </p>
         </header>
 
-        {/* Main Input Card */}
+        {/* Main Input Card - existing code remains the same */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 mb-8 overflow-hidden">
           <div className="p-8">
             <div className="flex items-center mb-6">
@@ -481,7 +542,7 @@ export default function SitemapConverter() {
           </div>
         </div>
 
-        {/* Results Section */}
+        {/* Results Section - existing code remains the same */}
         {sitemapData.length > 0 && (
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
             <div className="p-8 border-b border-gray-100">
@@ -574,6 +635,158 @@ export default function SitemapConverter() {
             </div>
           </div>
         )}
+
+        {/* Spacing */}
+        <div className="h-20"></div>
+
+        {/* SEO Benefits Section */}
+        <section className="mb-12 mt-52">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+            <h2 className="text-xl font-semibold text-gray-900 mb-6 text-center">
+              Perfect for SEO Competitor Analysis
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <h3 className="font-medium text-gray-900 mb-2">
+                  Competitor Research
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Analyze competitor site structures, page priorities, and
+                  content strategies
+                </p>
+              </div>
+              <div className="text-center">
+                <h3 className="font-medium text-gray-900 mb-2">
+                  Excel & Sheets Ready
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Direct import to spreadsheets for analysis, reporting, and
+                  team collaboration
+                </p>
+              </div>
+              <div className="text-center">
+                <h3 className="font-medium text-gray-900 mb-2">
+                  Instant Processing
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Fast conversion of large sitemaps with hreflang and metadata
+                  extraction
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SEO Features & FAQ Section */}
+        <section className="mt-12">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+            <h2 className="text-xl font-semibold text-gray-900 mb-6">
+              Why Use Our Sitemap Converter for SEO Analysis?
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div>
+                <h3 className="font-medium text-gray-900 mb-4 flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                  Competitor Intelligence
+                </h3>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li>
+                    • Analyze competitor site structures and content priorities
+                  </li>
+                  <li>• Identify high-priority pages and content gaps</li>
+                  <li>• Track content update frequencies and patterns</li>
+                  <li>• Discover international SEO strategies (hreflang)</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-medium text-gray-900 mb-4 flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                  Spreadsheet Integration
+                </h3>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li>• Direct import to Excel and Google Sheets</li>
+                  <li>• Perfect for SEO reports and client presentations</li>
+                  <li>
+                    • Filter, sort, and analyze data with spreadsheet tools
+                  </li>
+                  <li>• Share insights with your team easily</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="border-t border-gray-100 pt-8">
+              <h3 className="font-medium text-gray-900 mb-4">
+                Frequently Asked Questions
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-medium text-gray-800 mb-1">
+                    How to use this for competitor analysis?
+                  </h4>
+                  <p className="text-sm text-gray-600">
+                    Find your competitor's sitemap (usually at
+                    domain.com/sitemap.xml), download it, and use our converter
+                    to transform it into a CSV file you can analyze in Excel or
+                    Google Sheets.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-800 mb-1">
+                    What data can I extract from sitemaps?
+                  </h4>
+                  <p className="text-sm text-gray-600">
+                    Our tool extracts URLs, last modification dates, change
+                    frequencies, priority scores, and hreflang alternate
+                    versions - giving you comprehensive insights into site
+                    structure and SEO strategy.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-800 mb-1">
+                    Is there a limit on sitemap size?
+                  </h4>
+                  <p className="text-sm text-gray-600">
+                    No limits! Our converter handles large sitemaps with
+                    thousands of URLs. The preview shows the first 100 entries,
+                    but the CSV download includes everything.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer CTA */}
+        <footer className="mt-16 mb-8">
+          <div className="text-center">
+            <a
+              href="https://aiflowchat.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-6 py-3 "
+              title="Automate Your AI Prompts with AI Flow Chat"
+            >
+              <Button>
+                Automate Your AI Prompts with AI Flow Chat
+                <svg
+                  className="w-4 h-4 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </Button>
+            </a>
+          </div>
+        </footer>
       </div>
     </div>
   );
