@@ -4,7 +4,6 @@ import type React from "react"
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Alert, AlertDescription } from "@/components/ui/alert"
@@ -273,13 +272,16 @@ export default function SitemapConverter() {
                     XML Sitemap File
                   </Label>
                   <div className="relative">
-                    <Input
+                    <input
                       id="sitemap-file"
                       type="file"
                       accept=".xml,.txt"
                       onChange={handleFileChange}
-                      className="h-12 border-gray-200 rounded-xl bg-gray-50 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200 transition-colors cursor-pointer"
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                     />
+                    <div className="h-12 border-gray-200 rounded-xl bg-gray-50 border flex items-center justify-center cursor-pointer hover:bg-gray-100 transition-colors">
+                      <span className="text-sm font-medium text-gray-700">Choose File</span>
+                    </div>
                   </div>
 
                   {file && (
