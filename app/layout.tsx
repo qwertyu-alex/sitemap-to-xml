@@ -8,6 +8,14 @@ export const metadata: Metadata = {
   title: "Sitemap to CSV Converter",
   description: "Transform XML sitemaps into structured CSV data for analysis and reporting",
   generator: "v0.dev",
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/favicon.ico",
+  },
   openGraph: {
     title: "Sitemap to CSV Converter",
     description: "Transform XML sitemaps into structured CSV data for analysis and reporting",

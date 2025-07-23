@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { Upload, Download, FileText, AlertCircle, File } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
+import { useFavicon } from "@/lib/favicon-utils"
 
 interface SitemapEntry {
   url: string
@@ -83,6 +84,26 @@ export default function SitemapConverter() {
   const [xmlContent, setXmlContent] = useState<string>("")
   const [activeTab, setActiveTab] = useState<string>("upload")
 
+  const { startSimpleProcessing, stopSimpleProcessing } = useFavicon()
+
+  // Update favicon when processing state changes
+  useEffect(() => {
+    if (isProcessing) {
+      startSimpleProcessing()
+      // Also update document title to show processing
+      document.title = "Processing... - Sitemap to CSV Converter"
+    } else {
+      stopSimpleProcessing()
+      // Reset document title
+      document.title = "Sitemap to CSV Converter"
+    }
+
+    // Cleanup on unmount
+    return () => {
+      stopSimpleProcessing()
+    }
+  }, [isProcessing, startSimpleProcessing, stopSimpleProcessing])
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0]
     if (selectedFile) {
@@ -99,6 +120,9 @@ export default function SitemapConverter() {
     setError("")
 
     try {
+      // Add a small delay to show the processing state
+      await new Promise((resolve) => setTimeout(resolve, 500))
+
       let text: string
 
       if (activeTab === "upload" && file) {
@@ -299,9 +323,16 @@ export default function SitemapConverter() {
                         <Button
                           onClick={parseSitemap}
                           disabled={isProcessing}
-                          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium shadow-sm transition-all duration-150 hover:shadow-md active:scale-95"
+                          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium shadow-sm transition-all duration-150 hover:shadow-md active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          {isProcessing ? "Processing..." : "Convert"}
+                          {isProcessing ? (
+                            <div className="flex items-center">
+                              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                              Processing...
+                            </div>
+                          ) : (
+                            "Convert"
+                          )}
                         </Button>
                       </div>
                     </div>
@@ -342,9 +373,16 @@ export default function SitemapConverter() {
                         <Button
                           onClick={parseSitemap}
                           disabled={isProcessing}
-                          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium shadow-sm transition-all duration-150 hover:shadow-md active:scale-95"
+                          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium shadow-sm transition-all duration-150 hover:shadow-md active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          {isProcessing ? "Processing..." : "Convert"}
+                          {isProcessing ? (
+                            <div className="flex items-center">
+                              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                              Processing...
+                            </div>
+                          ) : (
+                            "Convert"
+                          )}
                         </Button>
                       </div>
                     </div>
