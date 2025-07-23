@@ -637,10 +637,37 @@ export default function SitemapConverter() {
         )}
 
         {/* Spacing */}
-        <div className="h-20"></div>
+        <div className="h-20 mt-52"></div>
+
+        {/* Demo video here */}
+        <section className="mb-12">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+            <h2 className="text-xl font-semibold text-gray-900 mb-6 text-center">
+              See How It Works
+            </h2>
+            <div className="relative w-full max-w-4xl mx-auto">
+              <div className="relative w-full h-0 pb-[56.25%]">
+                {" "}
+                {/* 16:9 aspect ratio */}
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-xl"
+                  src="https://www.youtube.com/embed/EpxkH1XlZjs"
+                  title="Sitemap to CSV Converter Demo"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+            <p className="text-center text-sm text-gray-600 mt-4">
+              Watch this quick demo to see how easy it is to convert XML
+              sitemaps to CSV format for competitor analysis
+            </p>
+          </div>
+        </section>
 
         {/* SEO Benefits Section */}
-        <section className="mb-12 mt-52">
+        <section className="mb-12 ">
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
             <h2 className="text-xl font-semibold text-gray-900 mb-6 text-center">
               Perfect for SEO Competitor Analysis
